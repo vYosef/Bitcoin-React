@@ -18,6 +18,7 @@ function _AppHeader(props) {
                 <nav>
                     <NavLink exact to="/" >Home</NavLink>
                     <NavLink to="/contacts">contact list</NavLink>
+                    <NavLink to="/signup">signup</NavLink>
                 </nav>
             </section>
         </header>

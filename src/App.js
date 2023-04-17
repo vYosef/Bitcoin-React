@@ -5,6 +5,7 @@ import { ContactPage } from './views/ContactPage'
 import { StatisticPage } from './views/StatisticPage'
 import { ContactDetails } from './views/ContactDetails'
 import { ContactEdit } from './views/ContactEdit'
+import { SignupPage } from './views/SignupPage'
 import { AppHeader } from './cmps/AppHeader'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contacts/:id" component={ContactDetails} />
             <Route path="/contacts" component={ContactPage} />
             <Route path="/statistics" component={StatisticPage} />
+            <Route path="/signup" component={SignupPage} />
             <Route path="/" component={Home} />
           </Switch>
         </main>
