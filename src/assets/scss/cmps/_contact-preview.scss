@@ -1,0 +1,30 @@
+.contact-preview {
+  background: #03a9f414;
+  box-shadow: 0 0 11px #0000002b;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  .info {
+    padding: 10px;
+    flex-grow: 1;
+  }
+  .image-wrapper {
+    width: 10vw;
+    img {
+      width: 100%;
+    }
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    flex-basis: 5%;
+    padding: 10px;
+    background-color: #000000c9;
+    transform: translateY(200%);
+    // transition: transform 0.2s;
+  }
+
+  &:hover .actions {
+    transform: translateY(0);
+  }
+}
