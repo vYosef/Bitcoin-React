@@ -1,0 +1,9 @@
+.signup {
+    text-align: center;
+    & h1, form, button {
+        margin-block-end: 1vh;
+    }
+    & button {
+        @include button
+    }
+}

@@ -51,11 +51,13 @@ export class ContactDetails extends Component {
   render() {
     const { contact, user } = this.state
     if (!contact || !user) return <div>Loading...</div>
-    let filteredMoves = user.moves.filter(move => move.toId === contact._id)
+    let filteredMoves = user.moves.filter((move) => move.toId === contact._id)
     return (
       <>
         <section className="contact-details">
-          <img src={`https://robohash.org/1`} />
+          <section className="contact-img-wrapper">
+            <img src={`https://robohash.org/${contact._id}`} />
+          </section>
           <section>
             <h3>name: {contact.name}</h3>
           </section>
@@ -72,7 +74,7 @@ export class ContactDetails extends Component {
           maxCoins={user.coins}
           onTransferCoins={this.onTransferCoins}
         />
-        <MovesList title={'Your Moves:'} movesList={filteredMoves}/>
+        <MovesList title={'Your Moves:'} movesList={filteredMoves} />
       </>
     )
   }

@@ -1,0 +1,29 @@
+.app-header {
+    background-color: $clr2;
+    & .container {
+        background-color: $clr2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        & nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 3vw;
+        }
+    }
+    & .back {
+        background-color: $clr2;
+        text-align: center;
+        & button {
+            @include button
+            // cursor: pointer;
+            // background-color: $clr4;
+            // color: $clr5;
+            // border-radius: 10px;
+            // &:hover {
+            //     opacity: 0.7;
+            // }
+        }
+    }
+}

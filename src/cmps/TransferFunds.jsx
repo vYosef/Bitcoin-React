@@ -49,19 +49,21 @@ export class TransferFunds extends Component {
 
     return (
       <>
-        <h3>Transfer coins to {this.props.contact.name}</h3>
-        <form onSubmit={this.onTransferCoins}>
-          <label htmlFor="amount">Amount:</label>
-          <input
-            value={amount}
-            onChange={this.handleChange}
-            type="number"
-            name="amount"
-            id="amount"
-            max={this.props.maxCoins}
-          />
-          <button>Transfer</button>
-        </form>
+        <section className='transfer-funds'>
+          <h3>Transfer coins to {this.props.contact.name}:</h3>
+          <form onSubmit={this.onTransferCoins}>
+            <label htmlFor="amount">Amount:</label>
+            <input
+              value={amount}
+              onChange={this.handleChange}
+              type="number"
+              name="amount"
+              id="amount"
+              max={this.props.maxCoins}
+            />
+            <button>Transfer</button>
+          </form>
+        </section>
       </>
     )
   }

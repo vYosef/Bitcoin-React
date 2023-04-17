@@ -1,0 +1,17 @@
+.moves-list {
+    background-color: $clr4;
+    margin-inline: 20vw;
+    max-width: 60vw;
+    color: $clr5;
+    padding-inline: 1em;
+    padding-block: 0.5em;
+    border-radius: 20px;
+    & h3 {
+        margin-block-end: 2vh;
+    }
+    & section {
+        margin-block-end: 2vh;
+        border-block-end: 1px solid $clr5;
+        padding-block: 0.5vh;
+    }
+}

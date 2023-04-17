@@ -14,12 +14,19 @@
 @import "basics/animations";
 
 // Views
-@import "views/contact-index";
+@import "views/Home";
+@import "views/Signup";
+@import "views/ContactPage";
+@import "views/ContactDetails";
+@import "views/ContactEdit";
 
 // Components
 @import "cmps/contact-preview";
 @import "cmps/contact-list";
 @import "cmps/contact-filter";
+@import "cmps/AppHeader";
+@import "cmps/MovesList";
+@import "cmps/TransferFunds";
 
 
 

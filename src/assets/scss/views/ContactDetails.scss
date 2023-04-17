@@ -1,0 +1,17 @@
+.contact-details {
+    & .contact-img-wrapper {
+        margin-inline: 50%;
+        translate: -60%;
+        width: 60vw;
+        & img {
+            width: 100%;
+        }
+    }
+    & section {
+        margin-block-end: 1vh;
+    }
+    & button {
+        margin-block-end: 1vh;
+        @include button
+    }
+}

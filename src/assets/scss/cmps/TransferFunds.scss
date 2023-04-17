@@ -1,0 +1,22 @@
+.transfer-funds {
+    margin-block-end: 2vh;
+    padding-inline: 3vw;
+    padding-block: 1vh;
+    background-color: $clr4;
+    border-radius: 20px;
+    text-align: center;
+    & form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1vh;
+        & input {
+            max-width: 60vw;
+            margin-inline: 20vw;
+        }
+        & button {
+            max-width: 60vw;
+            margin-inline: 20vw;
+        }
+    }
+}

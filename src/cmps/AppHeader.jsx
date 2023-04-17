@@ -11,16 +11,16 @@ function _AppHeader(props) {
     return (
         <header className="app-header">
             <section className="container">
-                <h1 className="logo">Robots</h1>
-                <section className="back">
-                    <button onClick={onBack} >Back</button>
-                </section>
+                <h1 className="logo">Mr Bitcoin</h1>
                 <nav>
                     <NavLink exact to="/" >Home</NavLink>
                     <NavLink to="/contacts">contact list</NavLink>
                     <NavLink to="/signup">signup</NavLink>
                 </nav>
             </section>
+                <section className="back">
+                    <button onClick={onBack} >Back</button>
+                </section>
         </header>
     )
 }

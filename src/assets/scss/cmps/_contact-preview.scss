@@ -3,13 +3,19 @@
   box-shadow: 0 0 11px #0000002b;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   overflow: hidden;
-  .info {
+  .contactInfo {
     padding: 10px;
     flex-grow: 1;
+    max-width: 60%;
+    & section {
+      display: flex;
+      gap: 2vw;
+    }
   }
   .image-wrapper {
-    width: 10vw;
+    width: 15vw;
     img {
       width: 100%;
     }
@@ -19,12 +25,15 @@
     align-items: center;
     flex-basis: 5%;
     padding: 10px;
-    background-color: #000000c9;
-    transform: translateY(200%);
+    & button {
+      @include button
+    }
+    // background-color: #000000c9;
+    // transform: translate(200%);
     // transition: transform 0.2s;
   }
 
-  &:hover .actions {
-    transform: translateY(0);
-  }
+  // &:hover .actions {
+  //   transform: translate(0);
+  // }
 }

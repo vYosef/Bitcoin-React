@@ -1,0 +1,19 @@
+.contact-edit {
+    text-align: center;
+    padding-block: 2vh;
+    border-radius: 25px;
+    background-color: $clr5;
+    & form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1vh;
+        & input, button {
+            max-width: 60vw;
+            margin-inline: 20vw;
+        }
+        & button {
+            @include button
+        }
+    }
+}

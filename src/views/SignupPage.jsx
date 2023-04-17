@@ -11,7 +11,7 @@ export class SignupPage extends Component {
     ev.preventDefault()
     if (this.state.name === '') return
     try {
-      await userService.signup(this.state.userName )
+      await userService.signup(this.state.userName)
       this.props.history.push('/')
     } catch (error) {
       console.log('error:', error)
@@ -32,7 +32,7 @@ export class SignupPage extends Component {
         value = target.checked
         break
     }
-    this.setState({userName: value})
+    this.setState({ userName: value })
     // this.setState(({ userName }) => ({
     //   userName: { ...userName, [field]: value },
     // }))
@@ -42,7 +42,7 @@ export class SignupPage extends Component {
     const { userName } = this.state
     // if (!name) return <div>Loading...</div>
     return (
-      <>
+      <section className='signup'>
         <h1>Please enter your name:</h1>
         <form onSubmit={this.onSignup}>
           <input
@@ -54,7 +54,7 @@ export class SignupPage extends Component {
           />
         </form>
         <button>Signup</button>
-      </>
+      </section>
     )
   }
 }

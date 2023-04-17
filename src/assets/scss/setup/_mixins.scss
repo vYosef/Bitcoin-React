@@ -90,3 +90,13 @@
         content: close-quote;
     }
 }
+
+@mixin button {
+    cursor: pointer;
+    background-color: $clr4;
+    color: $clr5;
+    border-radius: 10px;
+    &:hover {
+        opacity: 0.7;
+    }
+}

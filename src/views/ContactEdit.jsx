@@ -54,7 +54,7 @@ export class ContactEdit extends Component {
       <section className="contact-edit">
         <h1>{contact._id ? 'Edit' : 'Add'} Contact</h1>
         <form onSubmit={this.onSaveContact}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name:</label>
           <input
             value={name}
             onChange={this.handleChange}
@@ -63,7 +63,7 @@ export class ContactEdit extends Component {
             id="name"
           />
 
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">Phone:</label>
           <input
             value={phone}
             onChange={this.handleChange}
@@ -72,7 +72,7 @@ export class ContactEdit extends Component {
             id="phone"
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email:</label>
           <input
             value={email}
             onChange={this.handleChange}

@@ -6,7 +6,7 @@ import { bitCoinService } from '../services/bitCoin.service.js'
 export class Home extends Component {
   state = {
     user: null,
-    coins: null
+    coins: null,
   }
 
   componentDidMount() {
@@ -29,11 +29,13 @@ export class Home extends Component {
     if (!user) return <div>Loading...</div>
     return (
       <>
-        <h1>Hello {user.name}!</h1>
-        <h3>Coins:{user.coins}</h3>
-        <h3>BTC:{coins}</h3>
+        <section className="info">
+          <h1>Hello {user.name}!</h1>
+          <h3>Coins:{user.coins}</h3>
+          <h3>BTC:{coins}</h3>
+        </section>
 
-        <MovesList title={'Your last 3 Moves:'} movesList={user.moves}/>
+        <MovesList title={'Your last 3 Moves:'} movesList={user.moves} />
       </>
     )
   }
