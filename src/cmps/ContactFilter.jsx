@@ -38,7 +38,7 @@ export class ContactFilter extends Component {
         return (
             <form className='contact-filter'>
                 <section>
-                    <label htmlFor="name">name:</label>
+                    <label htmlFor="name">filter by name:</label>
                     <input onChange={this.handleChange} value={name} type="text" name="name" id="name" />
                 </section>
             </form>
