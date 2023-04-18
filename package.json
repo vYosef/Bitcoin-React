@@ -1,8 +1,8 @@
 {
   "name": "robots-react-inclass",
   "version": "0.1.0",
+  "homepage": "https://vYosef.github.io/Bitcoin-React",
   "private": true,
-  "homepage ": "http://{v-Yosef}.github.io/{Mister-Bitcoin}",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
