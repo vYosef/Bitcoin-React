@@ -10,12 +10,13 @@ function _AppHeader(props) {
 
     return (
         <header className="app-header">
-            <section className="container">
+            <section className="headerContainer">
                 <h1 className="logo">Mr Bitcoin</h1>
                 <nav>
                     <NavLink exact to="/" >Home</NavLink>
                     <NavLink to="/contacts">contact list</NavLink>
                     <NavLink to="/signup">signup</NavLink>
+                    <NavLink to="/statistics">statistics</NavLink>
                 </nav>
             </section>
                 <section className="back">

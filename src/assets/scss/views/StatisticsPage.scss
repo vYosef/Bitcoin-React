@@ -1,0 +1,14 @@
+.statistics-wrapper {
+   
+    text-align: center;
+    
+    & h2 {
+        margin-block-end: 5vh;
+        scale: 1.2;
+    }
+    & div {
+        display: flex;
+        flex-direction: column;
+        gap: 8vh;
+    }
+}

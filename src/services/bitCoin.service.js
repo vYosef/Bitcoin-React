@@ -49,7 +49,7 @@ async function getMarketPrice() {
   try {
        const response = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true`)
        const data = response.data
-       storageService.save(MARKET_PRICE_KEY, data)
+       storageService.store(MARKET_PRICE_KEY, data)
        return data
   } catch (err) {
        console.error('Error getting market prices:', err)
@@ -63,7 +63,7 @@ async function getConfirmedTransactions() {
   try {
        const response = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true`)
        const data = response.data
-       storageService.save(BLOCK_SIZE_KEY, data)
+       storageService.store(BLOCK_SIZE_KEY, data)
        return data
   } catch (err) {
        console.error('Error getting block size:', err)

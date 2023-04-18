@@ -8,7 +8,7 @@ export class TransferFunds extends Component {
 
   onTransferCoins = async (ev) => {
     ev.preventDefault()
-    let timeStamp = Date.now().toLocaleString()
+    let timeStamp = Date.now()
     const move = {
       toId: this.props.contact._id,
       to: this.props.contact.name,

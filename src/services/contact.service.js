@@ -186,6 +186,7 @@ function _addContact(contact) {
 }
 
 function saveContact(contact) {
+    console.log(contact)
     return contact._id ? _updateContact(contact) : _addContact(contact)
 }
 

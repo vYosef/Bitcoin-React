@@ -1,8 +1,15 @@
-.info {
-    margin-inline: 25vw;
-    // transform: translate(-50%);
-    margin-block-end: 10vh;
-    & h1, h3 {
-        margin-block: 1vh;
+.home-wrapper {
+    width: 100%;
+    & .info {
+        text-align: center;
+        width: 100%;
+        margin-block-end: 5vh;
+        & h1, h3 {
+            margin-block: 1vh;
+        }
+    }
+    & .moves-list {
+        margin: 0;
+        width: 100%;  
     }
 }

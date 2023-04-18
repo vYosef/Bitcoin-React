@@ -1,42 +1,38 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { MovesList } from '../cmps/MovesList'
 import { userService } from '../services/user.service.js'
 import { bitCoinService } from '../services/bitCoin.service.js'
 
-export class Home extends Component {
-  state = {
-    user: null,
-    coins: null,
-  }
+export function Home(props) {
+  const [user, setUser] = useState(null)
+  const [coins, setCoins] = useState(null)
 
-  componentDidMount() {
-    this.loadUser()
-  }
+  useEffect(() => {
+    loadUser()
+  }, [])
 
-  loadUser = async () => {
+  const loadUser = async () => {
     try {
       const currUser = await userService.getUser()
-      // currUser = JSON.parse(currUser)
       const coins = await bitCoinService.getRate(currUser.coins)
-      this.setState({ user: currUser, coins })
+      setUser(currUser)
+      setCoins(coins)
     } catch (err) {
       console.log('err:', err)
     }
   }
 
-  render() {
-    const { user, coins } = this.state
-    if (!user) return <div>Loading...</div>
-    return (
-      <>
+  if (!user) return <div>Loading...</div>
+  return (
+    <>
+      <div className='home-wrapper'>
         <section className="info">
           <h1>Hello {user.name}!</h1>
-          <h3>Coins:{user.coins}</h3>
-          <h3>BTC:{coins}</h3>
+          <h3>Coins: {user.coins}</h3>
+          <h3>BTC: {coins}</h3>
         </section>
-
         <MovesList title={'Your last 3 Moves:'} movesList={user.moves} />
-      </>
-    )
-  }
+      </div>
+    </>
+  )
 }

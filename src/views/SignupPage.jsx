@@ -1,24 +1,23 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { userService } from '../services/user.service.js'
-import { bitCoinService } from '../services/bitCoin.service.js'
+import { useForm } from '../customHooks/useForm'
 
-export class SignupPage extends Component {
-  state = {
-    userName: '',
-  }
+export function SignupPage(props) {
+  const [userName, setUserName] = useState('')
 
-  onSignup = async (ev) => {
+  const onSignup = async (ev) => {
     ev.preventDefault()
-    if (this.state.name === '') return
+    // if (this.state.name === '') return
     try {
-      await userService.signup(this.state.userName)
-      this.props.history.push('/')
+      await userService.signup(userName)
+      setUserName(userName)
+      props.history.push('/')
     } catch (error) {
       console.log('error:', error)
     }
   }
 
-  handleChange = ({ target }) => {
+  const handleChange = ({ target }) => {
     const field = target.name
     let value = target.value
 
@@ -32,29 +31,26 @@ export class SignupPage extends Component {
         value = target.checked
         break
     }
-    this.setState({ userName: value })
+    setUserName(value)
+    // this.setState({ amount: value })
     // this.setState(({ userName }) => ({
     //   userName: { ...userName, [field]: value },
     // }))
   }
 
-  render() {
-    const { userName } = this.state
-    // if (!name) return <div>Loading...</div>
-    return (
-      <section className='signup'>
-        <h1>Please enter your name:</h1>
-        <form onSubmit={this.onSignup}>
-          <input
-            value={userName}
-            onChange={this.handleChange}
-            type="text"
-            name="userName"
-            id="userName"
-          />
-        </form>
-        <button>Signup</button>
-      </section>
-    )
-  }
+  return (
+    <section className="signup">
+      <h1>Please enter your name:</h1>
+      <form onSubmit={onSignup}>
+        <input
+          value={userName}
+          onChange={handleChange}
+          type="text"
+          name="userName"
+          id="userName"
+        />
+      </form>
+      <button>Signup</button>
+    </section>
+  )
 }

@@ -31,7 +31,7 @@ function App() {
         </main>
 
         <footer>
-          <section className="container">coffeeRights 2022 &copy;</section>
+          <section className="container"><span>coffeeRights 2022 &copy;</span></section>
         </footer>
       </section>
     </Router>

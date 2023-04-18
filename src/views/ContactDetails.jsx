@@ -1,55 +1,47 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { contactService } from '../services/contact.service'
 import { userService } from '../services/user.service'
 import { MovesList } from '../cmps/MovesList'
 import { bitCoinService } from '../services/bitCoin.service'
 import { TransferFunds } from '../cmps/TransferFunds'
+import { useParams } from 'react-router-dom'
 
-export class ContactDetails extends Component {
-  state = {
-    contact: null,
-    user: null,
-  }
+export function ContactDetails(props) {
+  const [user, setUser] = useState(null)
+  const [contact, setContact] = useState(null)
+  const params = useParams()
 
-  componentDidMount() {
-    this.loadContact()
-    this.loadUser()
-  }
+  useEffect(() => {
+    loadContact()
+    loadUser()
+  }, [params.id])
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.loadContact()
-    }
-  }
-
-  loadContact = async () => {
+  const loadContact = async () => {
     try {
       const contact = await contactService.getContactById(
-        this.props.match.params.id
+        params.id
       )
-      this.setState({ contact })
+        setContact(contact)
     } catch (error) {
       console.log('error:', error)
     }
   }
 
-  loadUser = async () => {
+  const loadUser = async () => {
     try {
       const currUser = await userService.getUser()
-      // currUser = JSON.parse(currUser)
-      const coins = await bitCoinService.getRate(currUser.coins)
-      this.setState({ user: currUser, coins })
+      setUser(currUser)
     } catch (err) {
       console.log('err:', err)
     }
   }
 
-  onBack = () => {
-    this.props.history.push('/contacts')
+  const onBack = () => {
+    props.history.push('/contacts')
   }
 
-  render() {
-    const { contact, user } = this.state
+
+    // const { contact, user } = this.state
     if (!contact || !user) return <div>Loading...</div>
     let filteredMoves = user.moves.filter((move) => move.toId === contact._id)
     return (
@@ -67,15 +59,14 @@ export class ContactDetails extends Component {
           <section>
             <h3>phone: {contact.phone}</h3>
           </section>
-          <button onClick={this.onBack}>Back</button>
+          <button onClick={onBack}>Back</button>
         </section>
         <TransferFunds
           contact={contact}
           maxCoins={user.coins}
-          onTransferCoins={this.onTransferCoins}
         />
         <MovesList title={'Your Moves:'} movesList={filteredMoves} />
       </>
     )
-  }
+  
 }

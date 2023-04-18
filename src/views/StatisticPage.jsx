@@ -1,38 +1,53 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { Sparklines } from 'react-sparklines'
-import { SparklinesLine } from 'react-sparklines'
+import { SparklinesLine, SparklinesBars } from 'react-sparklines'
 import { bitCoinService } from '../services/bitCoin.service.js'
 
-export class StatisticPage extends Component {
-  state = {
-    marketPrices: null,
-  }
+export function StatisticPage(props) {
+  const [marketPrices, setMarketPrices] = useState(null)
+  const [transactions, setTransactions] = useState(null)
 
-  componentDidMount() {
-    this.loadPrices()
-  }
+  useEffect(() => {
+    loadData()
+  }, [])
 
-  loadPrices = async () => {
+  const loadData = async () => {
     try {
       const prices = await bitCoinService.getMarketPrice()
-      const values = prices.map((price) => {
+      const transactions = await bitCoinService.getConfirmedTransactions()
+      const priceValues = prices.values.map((price) => {
         return price.y
       })
-      this.setState({ marketPrices: values })
+      const transActionValues = transactions.values.map((price) => {
+        return price.y
+      })
+      setMarketPrices(priceValues)
+      setTransactions(transActionValues)
     } catch (err) {
       console.log('err:', err)
     }
   }
 
-  render() {
-    const { marketPrices } = this.state
-    if (!marketPrices) return <div>...Loading</div>
-    return (
-      <>
-        <Sparklines data={marketPrices}>
-          <SparklinesLine color="blue" />
-        </Sparklines>
-      </>
-    )
-  }
+  if (!marketPrices || !transactions) return <div>...Loading</div>
+  return (
+    <>
+      <div className="statistics-wrapper">
+        <h2>Statistics</h2>
+        <div>
+          <section>
+            <h3>Market Prices</h3>
+            <Sparklines data={marketPrices}>
+              <SparklinesLine color="blue" />
+            </Sparklines>
+          </section>
+          <section>
+            <h3>Transactions</h3>
+            <Sparklines data={transactions}>
+              <SparklinesLine color="red" />
+            </Sparklines>
+          </section>
+        </div>
+      </div>
+    </>
+  )
 }

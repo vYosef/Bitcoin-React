@@ -13,7 +13,28 @@ const users = [
     _id: makeId(),
     name: 'Ochoa Hyde',
     coins: 100,
-    moves: [],
+    moves: [
+      
+        {
+          "toId": "5a566402abce24c6bfe4699d",
+          "to": "Dominique Soto",
+          "at": 1681827470536,
+          "amount": 4
+        },
+        {
+          "toId": "5a566402abce24c6bfe4699d",
+          "to": "Dominique Soto",
+          "at": 1681827482849,
+          "amount": 12
+        },
+        {
+          "toId": "5a566402abce24c6bfe4699d",
+          "to": "Dominique Soto",
+          "at": 1681827482598,
+          "amount": 12
+        }
+      
+    ],
   },
 ]
 
@@ -28,6 +49,7 @@ function getUser() {
 }
 
 function signup(name) {
+  console.log(name)
   return new Promise((resolve, reject) => {
     let user = {
       _id: makeId(),
