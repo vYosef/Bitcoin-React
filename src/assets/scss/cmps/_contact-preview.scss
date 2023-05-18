@@ -5,35 +5,34 @@
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
+  flex-wrap: wrap;
+
   .contactInfo {
     padding: 10px;
     flex-grow: 1;
     max-width: 60%;
+
     & section {
       display: flex;
       gap: 2vw;
     }
   }
+
   .image-wrapper {
-    width: 15vw;
+    width: 25vw; // Increased image size
     img {
       width: 100%;
     }
   }
+
   .actions {
     display: flex;
     align-items: center;
     flex-basis: 5%;
     padding: 10px;
-    & button {
-      @include button
-    }
-    // background-color: #000000c9;
-    // transform: translate(200%);
-    // transition: transform 0.2s;
-  }
 
-  // &:hover .actions {
-  //   transform: translate(0);
-  // }
+    & button {
+      @include button;
+    }
+  }
 }

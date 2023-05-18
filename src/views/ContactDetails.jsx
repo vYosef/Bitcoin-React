@@ -9,6 +9,10 @@ import { useParams } from 'react-router-dom'
 export function ContactDetails(props) {
   const [user, setUser] = useState(null)
   const [contact, setContact] = useState(null)
+  const [moves, setMoves] = useState([])
+  const handleAddMove = (move) => {
+    setMoves((prevMoves) => [...prevMoves, move]);
+  };
   const params = useParams()
 
   useEffect(() => {
@@ -18,23 +22,26 @@ export function ContactDetails(props) {
 
   const loadContact = async () => {
     try {
-      const contact = await contactService.getContactById(
-        params.id
-      )
-        setContact(contact)
+      const contact = await contactService.getContactById(params.id);
+      setContact(contact);
     } catch (error) {
-      console.log('error:', error)
+      console.log('error:', error);
     }
-  }
-
+  };
+  
   const loadUser = async () => {
     try {
-      const currUser = await userService.getUser()
-      setUser(currUser)
+      const currUser = await userService.getUser();
+      setUser(currUser);
+      setMoves(currUser.moves); // Update the moves state with the fetched data
     } catch (err) {
-      console.log('err:', err)
+      console.log('err:', err);
     }
-  }
+  };
+
+  const handleTransferComplete = (move) => {
+    setMoves((prevMoves) => [...prevMoves, move]); // Update the moves state by adding the new move
+  };
 
   const onBack = () => {
     props.history.push('/contacts')
@@ -61,11 +68,11 @@ export function ContactDetails(props) {
           </section>
           <button onClick={onBack}>Back</button>
         </section>
-        <TransferFunds
+        <TransferFunds onAddMove={handleAddMove}
           contact={contact}
           maxCoins={user.coins}
         />
-        <MovesList title={'Your Moves:'} movesList={filteredMoves} />
+        <MovesList title={'Your Moves:'} movesList={moves} />
       </>
     )
   

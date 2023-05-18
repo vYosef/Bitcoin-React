@@ -7,22 +7,23 @@ export class TransferFunds extends Component {
   }
 
   onTransferCoins = async (ev) => {
-    ev.preventDefault()
-    let timeStamp = Date.now()
+    ev.preventDefault();
+    let timeStamp = Date.now();
     const move = {
       toId: this.props.contact._id,
       to: this.props.contact.name,
       at: timeStamp,
       amount: this.state.amount,
-    }
+    };
     try {
-      await userService.addMove(move)
-      await userService.updateUserCoins(move.amount)
+      await userService.addMove(move);
+      await userService.updateUserCoins(move.amount);
+      this.props.onAddMove(move); // Call the callback function and pass the move data
       // this.props.history.push('/contacts')
     } catch (err) {
-      console.log('err:', err)
+      console.log('err:', err);
     }
-  }
+  };
 
   handleChange = ({ target }) => {
     const field = target.name
@@ -39,9 +40,6 @@ export class TransferFunds extends Component {
         break
     }
     this.setState({ amount: value })
-    // this.setState(({ userName }) => ({
-    //   userName: { ...userName, [field]: value },
-    // }))
   }
 
   render() {
